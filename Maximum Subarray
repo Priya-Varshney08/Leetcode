@@ -1,0 +1,17 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        return kaden(nums);
+    }
+    public static int kaden(int[] a){
+        int sum = 0;
+        int ans = Integer.MIN_VALUE;
+        for(int i=0; i<a.length; i++){
+            sum += a[i];
+            ans = Math.max(sum, ans);
+            if(sum<0){
+                sum = 0;
+            }
+    }
+            return ans;
+    }
+}
