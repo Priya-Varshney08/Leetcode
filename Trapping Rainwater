@@ -1,0 +1,30 @@
+class Solution {
+    public int trap(int[] a) {
+        int n = a.length;
+        int lft_max[] = new int[n];
+        int rgt_max[] = new int[n];
+        int min[] = new int[n];
+        lft_max[0] = a[0];
+        rgt_max[n-1] = a[n-1];
+
+        for(int i=1; i<n; i++){
+            // if(lft_max[i-1] > a[i])
+            lft_max[i] = Math.max(lft_max[i-1], a[i]);
+        }
+        
+        for(int i=n-2; i>=0; i--){
+            rgt_max[i] = Math.max(rgt_max[i+1], a[i]);
+        }
+        
+        for(int i=0; i<n; i++){
+            min[i] = Math.min(rgt_max[i], lft_max[i]);
+        }
+        int sum = 0;
+        
+        for(int i=0; i<n; i++){
+            sum += Math.abs(min[i]-a[i]);
+        }
+        
+        return sum;
+    }
+    }
