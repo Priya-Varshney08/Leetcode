@@ -1,0 +1,41 @@
+class Solution {
+    public String largestNumber(int[] a) {
+        return formBiggestNumber(a);
+    }
+
+    public static String formBiggestNumber(int[] a){
+        int n = a.length;
+        int zero=0;
+        for(int i=0; i<n; i++){
+            if(a[i]==0)
+                zero++;
+        }
+        if(zero==n){
+            return "0";
+        }
+        
+        String[] arr = new String[n];
+        for(int i=0; i<n-1; i++){
+            for(int j=i+1; j<n; j++){
+                String x = String.valueOf(a[i]);
+                String y = String.valueOf(a[j]);
+                // System.out.println(x+y);
+                // System.out.println(y+x);
+                if((y+x).compareTo(x+y)>0){
+                    swap(a, i, j);
+                }
+            }
+        }
+        String nw = "";
+        for(int i=0; i<n; i++){
+            nw += a[i];
+        }
+        return nw;
+    }
+
+    public static void swap(int[]a, int i, int j){
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+}
