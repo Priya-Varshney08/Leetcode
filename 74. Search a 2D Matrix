@@ -1,0 +1,20 @@
+class Solution {
+    public boolean searchMatrix(int[][] a, int el) {
+        int r = a.length;
+        int c = a[0].length;
+        int ro = 0;
+        int co = c-1;
+        while( ro<r && co>=0){
+            if(a[ro][co]==el){
+                return true;
+            }
+            else if(a[ro][co]<el){
+                ro++;
+            }
+            else{
+                co--;
+            }
+        }
+        return false;
+    }
+}
