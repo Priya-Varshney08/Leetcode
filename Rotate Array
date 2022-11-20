@@ -1,0 +1,19 @@
+class Solution {
+    public void rotate(int[] a, int k) {
+        int n = a.length;
+        k = k % n;
+        rangeReverse(a, n-k, n-1);
+        rangeReverse(a, 0, n-k-1);
+        rangeReverse(a, 0, n-1);
+    }
+
+    public static void rangeReverse(int a[], int i, int j){
+        while(i<j){
+            int t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+            i++;
+            j--;
+        }
+    }
+}

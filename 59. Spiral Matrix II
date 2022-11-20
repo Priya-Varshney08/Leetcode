@@ -1,0 +1,38 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] a = new int[n][n];
+        int row = n-1;
+        int col = n-1;
+        int r_c = 0;
+        int c_c = 0;
+        int m = 1;
+
+        while(r_c<=row && c_c<=col){
+            for(int i=c_c; i<=col; i++){
+                a[r_c][i] = m++;
+                // System.out.print(r_c + " " + i + ", ");
+            }
+            r_c++;
+            for(int i=r_c; i<=row; i++){
+                a[i][col] = m++;
+                // System.out.print(i + " " + col +  ", ");
+            }
+            col--;
+            if(r_c<=row){
+                for(int i=col; i>=c_c; i--){
+                    a[row][i] = m++;
+                // System.out.print(row + " " + i +  ", ");
+                }
+            }
+            row--;
+            if(c_c<=col){
+                for(int i=row; i>=r_c; i--){
+                    a[i][c_c] = m++;
+                // System.out.print(i + " " + c_c +  ", ");
+                }
+                c_c++;
+            }
+        }
+        return a;
+    }
+}
