@@ -1,0 +1,15 @@
+class Solution {
+    public char repeatedCharacter(String s) {
+        int[] fre = new int[26];
+        char ans=' ';
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            fre[ch-97]++;
+            if(fre[ch-97]==2){
+                ans = ch;
+                break;
+            }
+        }
+        return ans;
+    }
+}
